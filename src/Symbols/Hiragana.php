@@ -6,39 +6,123 @@ namespace App\Symbols;
 
 class Hiragana
 {
-    public const HIRAGANA_SYMBOLS_1 = [
+    public const HIRAGANA_SYMBOLS = [
+        1 => [
+            [
+                'roomaji'  => 'a',
+                'hiragana' => 'あ',
+            ],
+            [
+                'roomaji'  => 'i',
+                'hiragana' => 'い',
+            ],
+            [
+                'roomaji'  => 'u',
+                'hiragana' => 'う',
+            ],
+            [
+                'roomaji'  => 'e',
+                'hiragana' => 'え',
+            ],
+            [
+                'roomaji'  => 'o',
+                'hiragana' => 'お',
+            ],
+        ],
+        2 => [
+            [
+                'roomaji'  => 'ka',
+                'hiragana' => 'か',
 
-    ];
+            ],
+            [
+                'roomaji'  => 'ki',
+                'hiragana' => 'き',
 
-    public const HIRAGANA_SYMBOLS_2 = [
+            ],
+            [
+                'roomaji'  => 'ku',
+                'hiragana' => 'く',
 
-    ];
+            ],
+            [
+                'roomaji'  => 'ke',
+                'hiragana' => 'け',
 
-    public const HIRAGANA_SYMBOLS_3 = [
+            ],
+            [
+                'roomaji'  => 'ko',
+                'hiragana' => 'こ',
 
-    ];
+            ],
+        ],
+        3 => [
+            [
+                'roomaji'  => 'sa',
+                'hiragana' => 'さ',
 
-    public const HIRAGANA_SYMBOLS_4 = [
+            ],
+            [
+                'roomaji'  => 'shi',
+                'hiragana' => 'し',
 
-    ];
+            ],
+            [
+                'roomaji'  => 'su',
+                'hiragana' => 'す',
 
-    public const HIRAGANA_SYMBOLS_5 = [
+            ],
+            [
+                'roomaji'  => 'se',
+                'hiragana' => 'せ',
 
-    ];
+            ],
+            [
+                'roomaji'  => 'so',
+                'hiragana' => 'そ',
 
-    public const HIRAGANA_SYMBOLS_6 = [
+            ],
+        ],
+        4 => [
+            [
+                'roomaji'  => 'ta',
+                'hiragana' => 'た',
 
-    ];
+            ],
+            [
+                'roomaji'  => 'chi',
+                'hiragana' => 'ち',
 
-    public const HIRAGANA_SYMBOLS_7 = [
+            ],
+            [
+                'roomaji'  => 'tsu',
+                'hiragana' => 'つ',
 
-    ];
+            ],
+            [
+                'roomaji'  => 'te',
+                'hiragana' => 'て',
 
-    public const HIRAGANA_SYMBOLS_8 = [
+            ],
+            [
+                'roomaji' => 'to',
+                'hiragana' => 'と'
+            ],
+        ],
+        5 => [
 
-    ];
+        ],
+        6 => [
 
-    public const HIRAGANA_SYMBOLS_9 = [
+        ],
+        7 => [
 
+        ],
+        8 => [
+
+        ],
+        9 => [
+
+        ],
     ];
 }
