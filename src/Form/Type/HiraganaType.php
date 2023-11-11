@@ -15,30 +15,40 @@ class HiraganaType extends AbstractType
     {
         $builder
             ->add('level_choice', ChoiceType::class, [
-                'label'   => 'Sélectionner le niveau d\'apprentissage des hiraganas',
+                'label'   => 'Niveau',
                 'attr'    => [
-                    'class' => 'js-select-level',
+                    'class' => 'js-select-level btn btn-outline-danger',
                 ],
+                'placeholder' => 'Select',
                 'choices' => [
-                    'Level 1' => 1,
-                    'Level 2' => 2,
-                    'Level 3' => 3,
-                    'Level 4' => 4,
-                    'Level 5' => 5,
-                    'Level 6' => 6,
-                    'Level 7' => 7,
-                    'Level 8' => 8,
-                    'Level 9' => 9,
+                    'Niveau 1' => 1,
+                    'Niveau 2' => 2,
+                    'Niveau 3' => 3,
+                    'Niveau 4' => 4,
+                    'Niveau 5' => 5,
+                    'Niveau 6' => 6,
+                    'Niveau 7' => 7,
+                    'Niveau 8' => 8,
+                    'Niveau 9' => 9,
                 ],
             ])
-            ->add('roomaji_show', CheckboxType::class,[
-                'label' => 'Afficher Roomaji'
+            ->add('roomaji_show', CheckboxType::class, [
+                'label' => 'Afficher Roomaji',
+                'attr'  => [
+                    'class' => 'hiragana-checkbox',
+                ],
             ])
-            ->add('hiragana_show', CheckboxType::class,[
-                'label' => 'Afficher Hiragana'
+            ->add('hiragana_show', CheckboxType::class, [
+                'label' => 'Afficher Hiragana',
+                'attr'  => [
+                    'class' => 'hiragana-checkbox',
+                ],
             ])
-            ->add('hiragana_sound', CheckboxType::class,[
-                'label' => 'Écouter la prononciation'
+            ->add('hiragana_sound', CheckboxType::class, [
+                'label' => 'Écouter la prononciation',
+                'attr'  => [
+                    'class' => 'hiragana-checkbox',
+                ],
             ])
         ;
     }
