@@ -37,6 +37,9 @@ class HiraganaType extends AbstractType
             ->add('hiragana_show', CheckboxType::class,[
                 'label' => 'Afficher Hiragana'
             ])
+            ->add('hiragana_sound', CheckboxType::class,[
+                'label' => 'Écouter la prononciation'
+            ])
         ;
     }
 

@@ -5,6 +5,10 @@ let roomajiShow = document.getElementById('roomaji-show');
 let roomajiButtonShow = document.getElementById('hiragana_roomaji_show');
 let hiraganaShow = document.getElementById('hiragana-show');
 let hiraganaButtonShow = document.getElementById('hiragana_hiragana_show');
+let hiraganaSoundAsset = document.getElementById('hiragana-get-sound');
+let hiraganaSoundDownloadLink = document.getElementById('hiragana-sound-download-link');
+let hiraganaSound = document.getElementById('hiragana-sound');
+let hiraganaButtonSound = document.getElementById('hiragana_hiragana_sound');
 let hiraganaBlock = document.getElementById('hiragana-block');
 let hiraganas = null;
 
@@ -29,6 +33,10 @@ const nextHiragana = () => {
   let hiragana = hiraganas[randomIndex];
   roomajiShow.innerHTML = hiragana['roomaji'];
   hiraganaShow.innerHTML = hiragana['hiragana'];
+  hiraganaSound.src = hiraganaSoundAsset.value + hiragana['roomaji'] + '.mp3';
+  if (hiraganaButtonSound.checked) {
+    hiraganaSound.play();
+  }
 };
 
 //afficher un hirgana au hazard
@@ -43,6 +51,10 @@ hiraganaButtonShow.addEventListener('change', function () {
 
 roomajiButtonShow.addEventListener('change', function () {
   roomajiShow.hidden = roomajiButtonShow.checked !== true;
+});
+
+hiraganaButtonSound.addEventListener('change', function () {
+  hiraganaSound.hidden = hiraganaButtonSound.checked !== true;
 });
 
 document.addEventListener('keypress', function (e) {
