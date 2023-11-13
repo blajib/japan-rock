@@ -13,6 +13,16 @@
   </head>
   <header>
     {% block header %}
+      <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-5"></div>
+        <div class="col-md-5"></div>
+        <div class="col-md-1">
+          <a class="" href="{{ path('hiragana-board') }}">
+            <input class="btn btn-danger mt-2 " type="button" value="Affichage hiragana">
+          </a>
+        </div>
+      </div>
     {% endblock %}
   </header>
   <body>

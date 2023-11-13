@@ -45,13 +45,13 @@ class HiraganaType extends AbstractType
                 ],
             ])
             ->add('hiragana_sound', CheckboxType::class, [
-                'label' => 'Écouter la prononciation',
+                'label' => 'Prononciation',
                 'attr'  => [
                     'class' => 'hiragana-checkbox',
                 ],
             ])
             ->add('hiragana_select_group', CheckboxType::class, [
-                'label' => 'Sélectionner uniquement le groupe',
+                'label' => 'Uniquement le groupe',
             ])
         ;
     }

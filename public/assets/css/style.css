@@ -2,3 +2,7 @@ body {
   background-image: url('../images/background.jpg');
   background-size: cover;
 }
+
+#hiragana-board{
+  max-width: 100%;
+}
