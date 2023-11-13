@@ -36,8 +36,7 @@ for (let checkbox of hiraganaCheckboxes) {
   });
 }
 
-//Permet de récupérer les hirganas par rapport au level choisi
-hiraganaLevel.addEventListener('change', async function () {
+const initAllHirganas = async () => {
   if (hiraganaLevel.value === '') {
     hiraganaGetButton.hidden = true;
     return;
@@ -55,29 +54,28 @@ hiraganaLevel.addEventListener('change', async function () {
   } else {
     alert('HTTP-Error: ' + response.status);
   }
+};
 
+const initGroupHiraganas = async (element) => {
+  let response = await fetch(hiraganaGetGroupRoute.value + '/' + hiraganaLevel.value);
+  if (response.ok) {
+    hiraganas = null;
+    hiraganas = await response.json();
+  } else {
+    alert('HTTP-Error: ' + response.status);
+  }
+};
+
+//Permet de récupérer les hirganas par rapport au level choisi
+hiraganaLevel.addEventListener('change', async function () {
+  await initAllHirganas();
 });
 
 hiraganaGetGroupButton.addEventListener('change', async function () {
   if (this.checked === true) {
-    let response = await fetch(hiraganaGetGroupRoute.value + '/' + hiraganaLevel.value);
-
-    if (response.ok) {
-      hiraganas = null;
-      hiraganas = await response.json();
-    } else {
-      alert('HTTP-Error: ' + response.status);
-    }
+    await initGroupHiraganas(this);
   } else {
-    let response = await fetch(hiraganaGetRoute.value + '/' + hiraganaLevel.value);
-
-    if (response.ok) {
-      hiraganas = await response.json();
-      hiraganaGetButton.type = 'button';
-      hiraganaBlock.hidden = false;
-    } else {
-      alert('HTTP-Error: ' + response.status);
-    }
+    await initAllHirganas();
   }
 });
 
