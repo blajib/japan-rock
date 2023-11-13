@@ -6,7 +6,12 @@
     <div class="col-md-4"></div>
     <div class="col-md-4 border rounded border-5 border-danger">
       {{ form_start(form) }}
-      {{ form_row(form.level_choice) }}
+      <div class="block-level">
+        {{ form_row(form.level_choice) }}
+        <div id="hiragana-group-select" hidden>
+          {{ form_row(form.hiragana_select_group) }}
+        </div>
+      </div>
       {{ form_row(form.roomaji_show) }}
       {{ form_row(form.hiragana_show) }}
       {{ form_row(form.hiragana_sound) }}
@@ -33,6 +38,7 @@
 
 {% block javascripts %}
   <input type="hidden" value="{{ path('hiragana-get') }}" id="hiragana-get-route">
+  <input type="hidden" value="{{ path('hiragana-get-group') }}" id="hiragana-get-group-route">
   <input type="hidden" value="/assets/sound/hiraganas/" id="hiragana-get-sound">
   <script src="{{ asset('get-hiragana.js','js') }}">
   </script>

@@ -50,6 +50,9 @@ class HiraganaType extends AbstractType
                     'class' => 'hiragana-checkbox',
                 ],
             ])
+            ->add('hiragana_select_group', CheckboxType::class, [
+                'label' => 'Sélectionner uniquement le groupe',
+            ])
         ;
     }
 

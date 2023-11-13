@@ -2,8 +2,11 @@
 let hiraganaLevel = document.getElementById('hiragana_level_choice');
 // bouton permettant de récupérer un nouvel Hiragana
 let hiraganaGetButton = document.getElementById('get-hiragana');
+let hiraganaGroupLevel = document.getElementById('hiragana-group-select');
+let hiraganaGetGroupButton = document.getElementById('hiragana_hiragana_select_group');
 //Element html hidden avec en valeur la route perttant d'effectuer la requête ajax
 let hiraganaGetRoute = document.getElementById('hiragana-get-route');
+let hiraganaGetGroupRoute = document.getElementById('hiragana-get-group-route');
 //H1 d'affichage de l'hiragana en roomaji
 let roomajiShow = document.getElementById('hiragana_roomaji_show_field');
 //case à cocher permettant l'affichage ou non du roomaji
@@ -23,6 +26,7 @@ let hiraganaBlock = document.getElementById('hiragana-block');
 let hiraganas = null;
 let hiraganaCheckboxes = document.getElementsByClassName('hiragana-checkbox');
 hiraganaLevel.selectedIndex = 0;
+hiraganaGetGroupButton.checked = false;
 
 for (let checkbox of hiraganaCheckboxes) {
   checkbox.checked = false;
@@ -39,6 +43,7 @@ hiraganaLevel.addEventListener('change', async function () {
     return;
   } else {
     hiraganaGetButton.hidden = false;
+    hiraganaGroupLevel.hidden = false;
   }
 
   let response = await fetch(hiraganaGetRoute.value + '/' + hiraganaLevel.value);
@@ -49,6 +54,30 @@ hiraganaLevel.addEventListener('change', async function () {
     hiraganaBlock.hidden = false;
   } else {
     alert('HTTP-Error: ' + response.status);
+  }
+
+});
+
+hiraganaGetGroupButton.addEventListener('change', async function () {
+  if (this.checked === true) {
+    let response = await fetch(hiraganaGetGroupRoute.value + '/' + hiraganaLevel.value);
+
+    if (response.ok) {
+      hiraganas = null;
+      hiraganas = await response.json();
+    } else {
+      alert('HTTP-Error: ' + response.status);
+    }
+  } else {
+    let response = await fetch(hiraganaGetRoute.value + '/' + hiraganaLevel.value);
+
+    if (response.ok) {
+      hiraganas = await response.json();
+      hiraganaGetButton.type = 'button';
+      hiraganaBlock.hidden = false;
+    } else {
+      alert('HTTP-Error: ' + response.status);
+    }
   }
 });
 
