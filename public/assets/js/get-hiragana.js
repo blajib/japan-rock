@@ -2,10 +2,13 @@
 let hiraganaLevel = document.getElementById('hiragana_level_choice');
 // bouton permettant de récupérer un nouvel Hiragana
 let hiraganaGetButton = document.getElementById('get-hiragana');
+//Groupe label/input a afficher après avoir sélectionné le level
 let hiraganaGroupLevel = document.getElementById('hiragana-group-select');
+//Case à cocher permettant de faire le choix de n'avoir qu'un groupe
 let hiraganaGetGroupButton = document.getElementById('hiragana_hiragana_select_group');
 //Element html hidden avec en valeur la route perttant d'effectuer la requête ajax
 let hiraganaGetRoute = document.getElementById('hiragana-get-route');
+//Element html hidden avec en valeur la route perttant d'effectuer la requête ajax
 let hiraganaGetGroupRoute = document.getElementById('hiragana-get-group-route');
 //H1 d'affichage de l'hiragana en roomaji
 let roomajiShow = document.getElementById('hiragana_roomaji_show_field');
@@ -23,19 +26,26 @@ let hiraganaButtonSound = document.getElementById('hiragana_hiragana_sound');
 let hiraganaSound = document.getElementById('hiragana_hiragana_sound_field');
 //Block avec hiragana, roomaji et le lecteur son
 let hiraganaBlock = document.getElementById('hiragana-block');
+//Liste des hiraganas à afficher
 let hiraganas = null;
+//Les case à cocher des paramètres d'affichages de l'hiragana
 let hiraganaCheckboxes = document.getElementsByClassName('hiragana-checkbox');
-hiraganaLevel.selectedIndex = 0;
-hiraganaGetGroupButton.checked = false;
 
-for (let checkbox of hiraganaCheckboxes) {
-  checkbox.checked = false;
-  let element = document.getElementById(checkbox.id + '_field');
-  checkbox.addEventListener('change', function () {
-    element.hidden = checkbox.checked !== true;
-  });
-}
+let playButtonHiraganaSound = document.getElementById('play-hiragana-sound');
 
+const init = () => {
+  hiraganaLevel.selectedIndex = 0;
+  hiraganaGetGroupButton.checked = false;
+  for (let checkbox of hiraganaCheckboxes) {
+    checkbox.checked = false;
+    let element = document.getElementById(checkbox.id + '_field');
+    checkbox.addEventListener('change', function () {
+      element.hidden = checkbox.checked !== true;
+    });
+  }
+};
+
+//Permet de récupérer les hirganas par rapport au level choisi
 const initAllHirganas = async () => {
   if (hiraganaLevel.value === '') {
     hiraganaGetButton.hidden = true;
@@ -43,6 +53,7 @@ const initAllHirganas = async () => {
   } else {
     hiraganaGetButton.hidden = false;
     hiraganaGroupLevel.hidden = false;
+    hiraganaGetGroupButton.checked = false;
   }
 
   let response = await fetch(hiraganaGetRoute.value + '/' + hiraganaLevel.value);
@@ -56,6 +67,7 @@ const initAllHirganas = async () => {
   }
 };
 
+//Permet de récupérer les groupes d'hirganas par rapport au level choisi
 const initGroupHiraganas = async (element) => {
   let response = await fetch(hiraganaGetGroupRoute.value + '/' + hiraganaLevel.value);
   if (response.ok) {
@@ -66,7 +78,8 @@ const initGroupHiraganas = async (element) => {
   }
 };
 
-//Permet de récupérer les hirganas par rapport au level choisi
+init();
+
 hiraganaLevel.addEventListener('change', async function () {
   await initAllHirganas();
 });

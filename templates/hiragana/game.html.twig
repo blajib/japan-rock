@@ -1,7 +1,9 @@
 {% extends 'base.html.twig' %}
+{% block header %}
+  {% include 'header.html.twig' %}
+{% endblock %}
 
 {% block body %}
-  <a class="btn btn-danger mt-2 ml-2" href="{{ path('home') }}">Home</a>
   <div class="row">
     <div class="col-md-4"></div>
     <div class="col-md-4 border rounded border-5 border-danger">
@@ -20,17 +22,17 @@
       <input class="btn btn-outline-danger" type="hidden" value="Get Hiragana" id="get-hiragana">
       <div id="hiragana-block" hidden>
         <div class="row">
-          <div class="col-md-4"></div>
+          <div class="col-md-4" ></div>
           <div class="col-md-4">
             <h1 class="display-1" id="hiragana_roomaji_show_field" hidden></h1>
             <h1 class="display-1" id="hiragana_hiragana_show_field" hidden></h1>
+            <audio id="hiragana_hiragana_sound_field" controls src="#" hidden></audio>
+{#            <button id="play-hiragana-sound">Écouter</button>#}
           </div>
-          <div class="col-md-4"></div>
+
         </div>
-        <figure id="hiragana-listen">
-          <audio id="hiragana_hiragana_sound_field" controls src="#" hidden></audio>
-        </figure>
       </div>
+      <div class="col-md-4"></div>
     </div>
     <div class="col-md-4"></div>
   </div>

@@ -1,7 +1,14 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-  <a href="{{ path('hiragana-game') }}">
-  <input type="button" value="Game">
-  </a>
+  <div class="row">
+    <div class="col-md-5"></div>
+    <div class="col-md-2 text-center">
+      <label for="hiragana-play">Exercice sur les hiraganas</label>
+      <a href="{{ path('hiragana-game') }}">
+        <input id="hiragana-play" class="btn btn-danger" type="button" value="Game">
+      </a>
+    </div>
+    <div class="col-md-5"></div>
+  </div>
 {% endblock %}
