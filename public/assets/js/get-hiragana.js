@@ -23,7 +23,9 @@ let hiraganaSoundAsset = document.getElementById('hiragana-get-sound');
 //case à cocher permettant d'écouter le son ou non de l'hiragana
 let hiraganaButtonSound = document.getElementById('hiragana_hiragana_sound');
 //Lecteur son
-let hiraganaSound = document.getElementById('hiragana_hiragana_sound_field');
+let hiraganaSound = document.getElementById('hiragana_audio');
+// Bouton play pour le plauer audio
+let hiraganaPlaySoundButton = document.getElementById('hiragana_hiragana_sound_field')
 //Block avec hiragana, roomaji et le lecteur son
 let hiraganaBlock = document.getElementById('hiragana-block');
 //Liste des hiraganas à afficher
@@ -43,6 +45,9 @@ const init = () => {
       element.hidden = checkbox.checked !== true;
     });
   }
+  hiraganaPlaySoundButton.addEventListener('click', function (){
+    hiraganaSound.play();
+  })
 };
 
 //Permet de récupérer les hirganas par rapport au level choisi

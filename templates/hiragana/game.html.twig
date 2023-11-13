@@ -6,11 +6,11 @@
 {% block body %}
   <div class="row">
     <div class="col-md-4"></div>
-    <div class="col-md-4 border rounded border-5 border-danger">
+    <div class="col-md-4">
       {{ form_start(form) }}
-      <div class="block-level">
+      <div class="block-level d-flex">
         {{ form_row(form.level_choice) }}
-        <div id="hiragana-group-select" hidden>
+        <div id="hiragana-group-select" class="ml-4" hidden>
           {{ form_row(form.hiragana_select_group) }}
         </div>
       </div>
@@ -24,10 +24,10 @@
         <div class="row">
           <div class="col-md-4" ></div>
           <div class="col-md-4">
-            <h1 class="display-1" id="hiragana_roomaji_show_field" hidden></h1>
-            <h1 class="display-1" id="hiragana_hiragana_show_field" hidden></h1>
-            <audio id="hiragana_hiragana_sound_field" controls src="#" hidden></audio>
-{#            <button id="play-hiragana-sound">Écouter</button>#}
+            <h1 id="hiragana_roomaji_show_field" class="display-1"  hidden></h1>
+            <h1 id="hiragana_hiragana_show_field" class="display-1" hidden></h1>
+            <audio id="hiragana_audio" controls src="#" hidden></audio>
+            <button id="hiragana_hiragana_sound_field" class="btn btn-danger mb-3" hidden>Écouter</button>
           </div>
 
         </div>
