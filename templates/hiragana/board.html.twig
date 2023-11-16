@@ -1,12 +1,18 @@
 {% extends 'base.html.twig' %}
-{% block header %}
-  {% include 'header.html.twig' %}
-{% endblock %}
+
 {% block title %}
-  Hiragana board
+  Hiragana board4
 {% endblock %}
 
 {% block body %}
+  <div class="row">
+    <div class="col-md-1">
+      <a class="" href="{{ path('hiragana-game') }}">
+        <input class="btn btn-danger mt-2 ml-2" type="button" value="Retour">
+      </a>
+    </div>
+    <div class="col-md-11"></div>
+  </div>
   <img id="hiragana-board" src="{{ asset('assets/images/hiragana-board-2.png') }}" alt="">
 {% endblock %}
 

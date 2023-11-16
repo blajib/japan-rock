@@ -1,12 +1,25 @@
 {% extends 'base.html.twig' %}
-{% block header %}
-  {% include 'header.html.twig' %}
-{% endblock %}
+
 {% block title %}
   Play hiragana
 {% endblock %}
 
 {% block body %}
+  <div class="row">
+    <div class="col-md-1">
+      <a class="" href="{{ path('home') }}">
+        <input class="btn btn-danger mt-2 ml-2" type="button" value="Home">
+      </a>
+    </div>
+    <div class="col-md-5"></div>
+    <div class="col-md-5"></div>
+    <div class="col-md-1">
+      <a class="" href="{{ path('hiragana-board') }}">
+        <input class="btn btn-danger mt-2 " type="button" value="Affichage hiragana">
+      </a>
+    </div>
+  </div>
+
   <div class="row">
     <div class="col-md-2"></div>
     <div class="col-md-5">
