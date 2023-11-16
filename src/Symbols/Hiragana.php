@@ -105,12 +105,35 @@ class Hiragana
 
             ],
             [
-                'roomaji' => 'to',
-                'hiragana' => 'と'
+                'roomaji'  => 'to',
+                'hiragana' => 'と',
             ],
         ],
         5 => [
+            [
+                'roomaji'  => 'na',
+                'hiragana' => 'な',
 
+            ],
+            [
+                'roomaji'  => 'ni',
+                'hiragana' => 'に',
+
+            ],
+            [
+                'roomaji'  => 'nu',
+                'hiragana' => 'ぬ ',
+
+            ],
+            [
+                'roomaji'  => 'ne',
+                'hiragana' => 'ね',
+
+            ],
+            [
+                'roomaji'  => 'no',
+                'hiragana' => 'の',
+            ],
         ],
         6 => [
 
