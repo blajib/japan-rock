@@ -136,12 +136,72 @@ class Hiragana
             ],
         ],
         6 => [
+            [
+                'roomaji'  => 'ha',
+                'hiragana' => 'は',
 
+            ],
+            [
+                'roomaji'  => 'hi',
+                'hiragana' => 'ひ',
+
+            ],
+            [
+                'roomaji'  => 'fu',
+                'hiragana' => 'ふ',
+
+            ],
+            [
+                'roomaji'  => 'he',
+                'hiragana' => 'へ',
+
+            ],
+            [
+                'roomaji'  => 'ho',
+                'hiragana' => 'ほ',
+            ],
         ],
         7 => [
+            [
+                'roomaji'  => 'ma',
+                'hiragana' => 'ま',
 
+            ],
+            [
+                'roomaji'  => 'mi',
+                'hiragana' => 'み',
+
+            ],
+            [
+                'roomaji'  => 'mu',
+                'hiragana' => 'む',
+
+            ],
+            [
+                'roomaji'  => 'me',
+                'hiragana' => 'め',
+
+            ],
+            [
+                'roomaji'  => 'mo',
+                'hiragana' => 'も',
+            ],
         ],
         8 => [
+            [
+                'roomaji'  => 'ya',
+                'hiragana' => 'や',
+
+            ],
+            [
+                'roomaji'  => 'yu',
+                'hiragana' => 'ゆ',
+
+            ],
+            [
+                'roomaji'  => 'yo',
+                'hiragana' => 'よ',
+            ],
 
         ],
         9 => [
