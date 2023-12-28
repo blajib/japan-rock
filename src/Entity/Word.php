@@ -19,7 +19,7 @@ class Word
     #[ORM\Column(length: 255)]
     private ?string $frenchTranslate = null;
 
-    #[ORM\ManyToOne(targetEntity: Word::class, inversedBy: 'words')]
+    #[ORM\ManyToOne(targetEntity: WordGroup::class, inversedBy: 'words')]
     private WordGroup $wordGroup;
 
     public function getId(): ?int
@@ -49,5 +49,15 @@ class Word
         $this->frenchTranslate = $frenchTranslate;
 
         return $this;
+    }
+
+    public function getWordGroup(): WordGroup
+    {
+        return $this->wordGroup;
+    }
+
+    public function setWordGroup(WordGroup $wordGroup): void
+    {
+        $this->wordGroup = $wordGroup;
     }
 }

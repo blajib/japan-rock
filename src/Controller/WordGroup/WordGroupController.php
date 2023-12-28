@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\WordGroup;
 
 use App\Entity\WordGroup;
 use App\Form\WordGroupType;
@@ -38,7 +38,7 @@ class WordGroupController extends AbstractController
 
         return $this->render('word_group/new.html.twig', [
             'word_group' => $wordGroup,
-            'form' => $form,
+            'form'       => $form,
         ]);
     }
 
@@ -64,14 +64,14 @@ class WordGroupController extends AbstractController
 
         return $this->render('word_group/edit.html.twig', [
             'word_group' => $wordGroup,
-            'form' => $form,
+            'form'       => $form,
         ]);
     }
 
     #[Route('/{id}', name: 'app_word_group_delete', methods: ['POST'])]
     public function delete(Request $request, WordGroup $wordGroup, EntityManagerInterface $entityManager): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$wordGroup->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $wordGroup->getId(), $request->request->get('_token'))) {
             $entityManager->remove($wordGroup);
             $entityManager->flush();
         }

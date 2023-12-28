@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Manager;
 
+use App\Entity\Word;
 use App\Helper\WordHelper;
 
 class WordManager
@@ -24,7 +25,13 @@ class WordManager
         $dico = $this->getDictionary();
 
         for ($i = 1; $i <= $count; $i++) {
-            $result[] = $this->wordHelper->formatWordLine($dico[array_rand($dico)]);
+            $formatLine = $this->wordHelper->formatWordLine($dico[array_rand($dico)]);
+
+            $word = new Word();
+            $word->setFrenchTranslate($formatLine['france']);
+            $word->setJapanTranslate($formatLine['japan']);
+
+            $result[] = $word;
         }
 
         return $result;
