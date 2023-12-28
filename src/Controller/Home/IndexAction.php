@@ -17,8 +17,6 @@ class IndexAction extends AbstractController
 {
     public function __invoke(WordManager $wordManager): Response
     {
-        dd($wordManager->getRandomWordGroup(3));
-
         return $this->render('home/index.html.twig',[
             'bite' => 'grosse bite'
         ]);
