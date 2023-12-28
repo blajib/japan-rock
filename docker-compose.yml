@@ -1,0 +1,21 @@
+version: '3.4'
+
+volumes:
+    data:
+
+services:
+    mysql:
+        image: percona:8
+        environment:
+            - MYSQL_ROOT_PASSWORD=root
+            - MYSQL_DATABASE=magik-hiragana
+        volumes:
+            - data:/var/lib/mysql
+        ports:
+            - "3307:3306"
+
+    mailhog:
+        image: mailhog/mailhog:latest
+        ports:
+            - "1025:1025"
+            - "8025:8025"
