@@ -8,12 +8,12 @@ body {
 #hiragana-board {
   max-width: 100%;
   border-radius: 20px;
-  background: rgba(80, 80, 80, 0.5);
+  background: rgba(253, 246, 197, 0.8);
   padding: 10px;
 }
 
 .navbar {
-  margin-bottom: 50px;
+  margin-bottom: 25px;
 }
 
 .nav-link {
@@ -27,4 +27,22 @@ body {
   padding: 10px;
   color: beige;
   font-weight: bold;
+}
+
+@media only screen and (max-width: 600px) {
+  body {
+    background-image: url("../images/background-shop.jpg");
+    width: 150px;
+  }
+
+  .navbar-nav {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .nav-link {
+    color: beige;
+    font-weight: bold;
+    margin-right: 10px;
+  }
 }
