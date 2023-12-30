@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Controller\Home;
 
 use App\Manager\WordManager;
+use App\Repository\WordGroupRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -15,10 +16,16 @@ use Symfony\Component\Routing\Annotation\Route;
 )]
 class IndexAction extends AbstractController
 {
-    public function __invoke(WordManager $wordManager): Response
+    public function __invoke(WordManager $wordManager, WordGroupRepository $groupRepository): Response
     {
-        return $this->render('home/index.html.twig',[
-            'bite' => 'grosse bite'
+        $wordGroup = $groupRepository->findByDate(new \DateTime());
+
+        if (null === $wordGroup) {
+            $wordGroup = $wordManager->initDayWordGroup();
+        }
+
+        return $this->render('home/index.html.twig', [
+            'words' => $wordGroup->getWords(),
         ]);
     }
 }

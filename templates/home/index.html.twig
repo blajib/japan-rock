@@ -1,14 +1,46 @@
 {% extends 'base.html.twig' %}
 
-{% block body %}
+{% block header %}
   <div class="row">
-    <div class="col-md-5"></div>
-    <div class="col-md-2 text-center">
-      <label for="hiragana-play">Exercice sur les hiraganas</label>
-      <a href="{{ path('hiragana-game') }}">
-        <input id="hiragana-play" class="btn btn-danger" type="button" value="Game">
+    <div class="col-md-1"></div>
+    <div class="col-md-8"></div>
+    <div class="col-md-1">
+      <a href="{{ path('word_index') }}">
+        <input id="hiragana-play" class="btn btn-danger mt-2 " type="button" value="Liste mots">
       </a>
     </div>
-    <div class="col-md-5"></div>
+    <div class="col-md-1">
+      <a href="{{ path('hiragana-game') }}">
+        <input id="hiragana-play" class="btn btn-danger mt-2 " type="button" value="Game">
+      </a>
+    </div>
+    <div class="col-md-1">
+      <a class="" href="{{ path('hiragana-board') }}">
+        <input class="btn btn-danger mt-2 " type="button" value="Affichage hiragana">
+      </a>
+    </div>
   </div>
+{% endblock %}
+
+{% block body %}
+  {% if words is not null %}
+    <div class="row">
+      <div class="col-md-1"></div>
+      <div class="col-md-10 text-center">
+        <h1>Mots du jour</h1>
+      </div>
+      <div class="col-md-1"></div>
+    </div>
+    {% for word in words %}
+      <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-10 text-center">
+          {{ word.frenchTranslate }} : {{ word.japanTranslate }}
+        </div>
+        <div class="col-md-1"></div>
+      </div>
+    {% endfor %}
+  {% else %}
+    Aucun mots aujourd'hui
+  {% endif %}
 {% endblock %}

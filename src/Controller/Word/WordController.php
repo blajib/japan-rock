@@ -14,7 +14,7 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('/word')]
 class WordController extends AbstractController
 {
-    #[Route('/', name: 'app_word_index', methods: ['GET'])]
+    #[Route('/', name: 'word_index', methods: ['GET'])]
     public function index(WordRepository $wordRepository): Response
     {
         return $this->render('word/index.html.twig', [

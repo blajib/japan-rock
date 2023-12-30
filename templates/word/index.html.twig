@@ -2,36 +2,48 @@
 
 {% block title %}Word index{% endblock %}
 
+{% block header %}
+  <div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-8"></div>
+    <div class="col-md-1">
+      <a href="{{ path('home') }}">
+        <input id="hiragana-play" class="btn btn-danger mt-2 " type="button" value="Home">
+      </a>
+    </div>
+    <div class="col-md-1">
+      <a href="{{ path('hiragana-game') }}">
+        <input id="hiragana-play" class="btn btn-danger mt-2 " type="button" value="Game">
+      </a>
+    </div>
+    <div class="col-md-1">
+      <a class="" href="{{ path('hiragana-board') }}">
+        <input class="btn btn-danger mt-2 " type="button" value="Affichage hiragana">
+      </a>
+    </div>
+  </div>
+{% endblock %}
 {% block body %}
-    <h1>Word index</h1>
+  <h1>Tous les mots</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>JapanTranslate</th>
-                <th>FrenchTranslate</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for word in words %}
-            <tr>
-                <td>{{ word.id }}</td>
-                <td>{{ word.japanTranslate }}</td>
-                <td>{{ word.frenchTranslate }}</td>
-                <td>
-                    <a href="{{ path('app_word_show', {'id': word.id}) }}">show</a>
-                    <a href="{{ path('app_word_edit', {'id': word.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="4">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <a href="{{ path('app_word_new') }}">Create new</a>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Français</th>
+        <th>Japonais</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for word in words %}
+        <tr>
+          <td>{{ word.frenchTranslate }}</td>
+          <td>{{ word.japanTranslate }}</td>
+        </tr>
+      {% else %}
+        <tr>
+          <td colspan="4">no records found</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
 {% endblock %}

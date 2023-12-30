@@ -21,8 +21,15 @@ class WordGroupRepository extends ServiceEntityRepository
         parent::__construct($registry, WordGroup::class);
     }
 
-    public function findByDate(\DateTime $date): array
+    public function findByDate(\DateTime $date): ?WordGroup
     {
-        return $this->findBy(['date' => $date]);
+        $qb = $this->createQueryBuilder('o');
+
+        $qb
+            ->andWhere('o.date = :date')
+            ->setParameter('date', $date->format('Y-m-d'))
+        ;
+
+        return $qb->getQuery()->getOneOrNullResult();
     }
 }

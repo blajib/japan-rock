@@ -2,10 +2,8 @@
 
 namespace App\Command;
 
-use App\Entity\WordGroup;
 use App\Manager\WordManager;
 use App\Repository\WordGroupRepository;
-use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
@@ -19,8 +17,7 @@ use Symfony\Component\Console\Style\SymfonyStyle;
 class GetDayWordGroupCommand extends Command
 {
     public function __construct(
-        private readonly WordManager $worldManager,
-        private readonly EntityManagerInterface $entityManager,
+        private readonly WordManager $wordManager,
         private readonly WordGroupRepository $wordGroupRepository
     ) {
         parent::__construct();
@@ -32,25 +29,13 @@ class GetDayWordGroupCommand extends Command
 
         $wordGroup = $this->wordGroupRepository->findByDate(new \DateTime('midnight'));
 
-        if (\count($wordGroup) > 0) {
+        if (null !== $wordGroup) {
             $io->error("L'ajout des mots de la journée à déja été effectué");
 
             return 0;
         }
 
-        $words = $this->worldManager->getRandomWordGroup(3);
-
-        $wordGroup = new WordGroup();
-
-        $wordGroup->setDate(new \DateTime('midnight'));
-        $wordGroup->setWords($words);
-
-        try {
-            $this->entityManager->persist($wordGroup);
-            $this->entityManager->flush();
-        } catch (\Throwable $e) {
-            throw new \RuntimeException("Une erreur est survenue lors de l'ajout des nouveaux mots de la journée");
-        }
+        $this->wordManager->initDayWordGroup();
 
         $io->success("L'ajout des nouveaux mots de la jounrée à bien été effectué");
 
