@@ -12,7 +12,7 @@ class BoardAction extends AbstractController
 {
     #[Route(
         '/hiragana/board',
-        name: 'hiragana-board',
+        name: 'hiragana_board',
     )]
     public function __invoke(string $level = '1'): Response
     {

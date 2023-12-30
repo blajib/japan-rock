@@ -15,12 +15,12 @@ class HiraganaType extends AbstractType
     {
         $builder
             ->add('level_choice', ChoiceType::class, [
-                'label'   => 'Niveau',
-                'attr'    => [
-                    'class' => 'js-select-level btn btn-outline-danger',
+                'label'       => 'Niveau',
+                'attr'        => [
+                    'class' => 'js-select-level btn btn-outline-light',
                 ],
                 'placeholder' => 'Select',
-                'choices' => [
+                'choices'     => [
                     'Niveau 1' => 1,
                     'Niveau 2' => 2,
                     'Niveau 3' => 3,

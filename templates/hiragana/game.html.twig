@@ -3,86 +3,70 @@
 {% block title %}
   Play hiragana
 {% endblock %}
-{% block header %}
-  <div class="row">
-    <div class="col-md-1">
-      <a class="" href="{{ path('home') }}">
-        <input class="btn btn-danger mt-2 ml-2" type="button" value="Home">
-      </a>
-    </div>
-    <div class="col-md-5"></div>
-    <div class="col-md-5"></div>
-    <div class="col-md-1">
-      <a class="" href="{{ path('hiragana-board') }}">
-        <input class="btn btn-danger mt-2 " type="button" value="Affichage hiragana">
-      </a>
-    </div>
-  </div>
-{% endblock %}
+
 {% block body %}
-
-
   <div class="row">
-    <div class="col-md-2"></div>
-    <div class="col-md-5">
+    <div class="col-md-4"></div>
+    <div class="col-md-4 display-box">
       {{ form_start(form) }}
       <div class="row">
         <div class="col-md-5">
           {{ form_label(form.level_choice) }}
+        </div>
+        <div class="col-md-3">
           {{ form_widget(form.level_choice) }}
         </div>
-        <div class="col-md-7">
-            <div id="hiragana-group-select" hidden>
-              <div class="row">
-                <div class="col-md-6">
-                  {{ form_label(form.hiragana_select_group) }}
-                </div>
-                <div class="col-md-1">
-                  {{ form_widget(form.hiragana_select_group) }}
-                </div>
-                <div class="col-md-5"></div>
-              </div>
-            </div>
+        <div class="col-md-4">
         </div>
       </div>
       <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-7">
           {{ form_label(form.roomaji_show) }}
         </div>
         <div class="col-md-1">
           {{ form_widget(form.roomaji_show) }}
         </div>
-        <div class="col-md-7"></div>
+        <div class="col-md-4"></div>
       </div>
       <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-7">
           {{ form_label(form.hiragana_show) }}
         </div>
         <div class="col-md-1">
           {{ form_widget(form.hiragana_show) }}
         </div>
-        <div class="col-md-7"></div>
+        <div class="col-md-4"></div>
       </div>
       <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-7">
           {{ form_label(form.hiragana_sound) }}
         </div>
         <div class="col-md-1">
           {{ form_widget(form.hiragana_sound) }}
         </div>
-        <div class="col-md-7"></div>
+        <div class="col-md-4"></div>
       </div>
-      <input class="btn btn-outline-danger" type="hidden" value="Get Hiragana" id="get-hiragana">
-    </div>
-    <div class="col-md-5"></div>
-  </div>
-  <div class="row">
-    <div class="col-md-4"></div>
-    <div class="col-md-4">
+      <div id="hiragana-group-select" class="row" hidden>
+        <div class="col-md-7">
+          {{ form_label(form.hiragana_select_group) }}
+        </div>
+        <div class="col-md-1">
+          {{ form_widget(form.hiragana_select_group) }}
+        </div>
+        <div class="col-md-4"></div>
+      </div>
+      <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+          <input class="btn btn-outline-light" type="hidden" value="Get Hiragana" id="get-hiragana">
+
+        </div>
+        <div class="col-md-4"></div>
+      </div>
       <div id="hiragana-block" hidden>
         <div class="row">
-          <div class="col-md-4"></div>
-          <div class="col-md-4">
+          <div class="col-md-5"></div>
+          <div class="col-md-3">
             <h1 id="hiragana_roomaji_show_field" class="display-1" hidden></h1>
             <h1 id="hiragana_hiragana_show_field" class="display-1" hidden></h1>
             <audio id="hiragana_audio" controls src="#" hidden></audio>
@@ -90,10 +74,8 @@
           </div>
         </div>
       </div>
-      <div class="col-md-4"></div>
     </div>
     <div class="col-md-4"></div>
-  </div>
 {% endblock %}
 
 {% block javascripts %}

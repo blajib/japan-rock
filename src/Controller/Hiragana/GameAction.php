@@ -11,7 +11,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 #[Route(
     '/hiragana/game',
-    name: 'hiragana-game',
+    name: 'hiragana_game',
 )]
 class GameAction extends AbstractController
 {

@@ -1,9 +1,30 @@
 body {
-  background-image: url('../images/background.jpg');
+  background-image: url("../images/background-shop.jpg");
   background-size: cover;
-  margin-right: 80px;
+  width: auto;
+  padding-right: 20px;
 }
 
-#hiragana-board{
+#hiragana-board {
   max-width: 100%;
+  border-radius: 20px;
+  background: rgba(80, 80, 80, 0.5);
+  padding: 10px;
+}
+
+.navbar {
+  margin-bottom: 50px;
+}
+
+.nav-link {
+  color: beige;
+  font-weight: bold;
+}
+
+.display-box {
+  border-radius: 20px;
+  background: rgba(80, 80, 80, 0.5);
+  padding: 10px;
+  color: beige;
+  font-weight: bold;
 }
