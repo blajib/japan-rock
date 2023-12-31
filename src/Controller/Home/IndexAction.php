@@ -19,8 +19,12 @@ use Symfony\Contracts\HttpClient\HttpClientInterface;
 )]
 class IndexAction extends AbstractController
 {
-    public function __invoke(WordManager $wordManager, WordGroupRepository $groupRepository, HttpClientInterface $client, WeatherTools $tool): Response
-    {
+    public function __invoke(
+        WordManager $wordManager,
+        WordGroupRepository $groupRepository,
+        HttpClientInterface $client,
+        WeatherTools $tool
+    ): Response {
         $wordGroup = $groupRepository->findByDate(new \DateTime());
 
         if (null === $wordGroup) {

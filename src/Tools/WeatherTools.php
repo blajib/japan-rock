@@ -19,7 +19,7 @@ class WeatherTools
             'GET',
             'https://api.openweathermap.org/data/2.5/weather?q=' . ucfirst(
                 $city
-            ) . '&appid=44761feaa8070cfaefad90ca1fd81f37'
+            ) . '&units=metric&appid=44761feaa8070cfaefad90ca1fd81f37'
         );
 
         return json_decode($response->getContent(), true);

@@ -3,4 +3,6 @@
 <div id="bloc-weather" class="display-box">
   <p>{{ cityData.name }}</p>
   <img src="{{ weatherIconLink }}" alt="">
+  <small>min: {{ cityData.main.temp_min|round }}</small><br>
+  <small>max: {{ cityData.main.temp_max|round }}</small>
 </div>

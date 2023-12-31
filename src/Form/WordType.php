@@ -16,8 +16,8 @@ class WordType extends AbstractType
             ->add('japanTranslate')
             ->add('frenchTranslate')
             ->add('wordGroup', EntityType::class, [
-                'class' => Word::class,
-'choice_label' => 'id',
+                'class'        => Word::class,
+                'choice_label' => 'id',
             ])
         ;
     }
