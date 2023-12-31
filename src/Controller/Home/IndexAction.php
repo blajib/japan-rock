@@ -6,9 +6,12 @@ namespace App\Controller\Home;
 
 use App\Manager\WordManager;
 use App\Repository\WordGroupRepository;
+use App\Tools\WeatherTools;
+use Pyrrah\OpenWeatherMapBundle\Services\Client;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Contracts\HttpClient\HttpClientInterface;
 
 #[Route(
     '/',
@@ -16,8 +19,9 @@ use Symfony\Component\Routing\Annotation\Route;
 )]
 class IndexAction extends AbstractController
 {
-    public function __invoke(WordManager $wordManager, WordGroupRepository $groupRepository): Response
+    public function __invoke(WordManager $wordManager, WordGroupRepository $groupRepository, HttpClientInterface $client, WeatherTools $tool): Response
     {
+        // dd($tool->getWeather('tokyo'));
         $wordGroup = $groupRepository->findByDate(new \DateTime());
 
         if (null === $wordGroup) {
