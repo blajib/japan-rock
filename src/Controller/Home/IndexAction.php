@@ -21,7 +21,6 @@ class IndexAction extends AbstractController
 {
     public function __invoke(WordManager $wordManager, WordGroupRepository $groupRepository, HttpClientInterface $client, WeatherTools $tool): Response
     {
-        // dd($tool->getWeather('tokyo'));
         $wordGroup = $groupRepository->findByDate(new \DateTime());
 
         if (null === $wordGroup) {

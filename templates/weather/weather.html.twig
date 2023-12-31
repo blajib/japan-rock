@@ -1,3 +1,6 @@
-<div>
-{{ dump(random_city_weather()) }}
+{% set cityData = random_city_weather() %}
+{% set weatherIconLink = 'https://openweathermap.org/img/wn/'~cityData.weather[0].icon~'@2x.png' %}
+<div id="bloc-weather" class="display-box">
+  <p>{{ cityData.name }}</p>
+  <img src="{{ weatherIconLink }}" alt="">
 </div>
