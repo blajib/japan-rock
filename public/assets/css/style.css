@@ -2,7 +2,6 @@ body {
   background-image: url("../images/background-shop.jpg");
   background-size: cover;
   width: auto;
-  padding-right: 20px;
 }
 
 #hiragana-board {
@@ -40,10 +39,14 @@ body {
   font-weight: bold;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 1024px) {
   body {
     background-image: url("../images/background-shop.jpg");
-    width: 150px;
+    background-size: 250%;
+  }
+
+  .display-box{
+    margin: 20px;
   }
 
   .navbar-nav {
@@ -55,5 +58,9 @@ body {
     color: beige;
     font-weight: bold;
     margin-right: 10px;
+  }
+
+  #bloc-weather{
+    display: none;
   }
 }
