@@ -30,9 +30,8 @@ body {
   margin-bottom: 20px;
 }
 
-#bloc-weather{
+#bloc-weather {
   width: 100px;
-  text-align-all: center;
   position: fixed;
   bottom: 0;
   right: 0;
@@ -45,7 +44,7 @@ body {
     background-size: 250%;
   }
 
-  .display-box{
+  .display-box {
     margin: 20px;
   }
 
@@ -60,7 +59,7 @@ body {
     margin-right: 10px;
   }
 
-  #bloc-weather{
+  #bloc-weather {
     display: none;
   }
 }
