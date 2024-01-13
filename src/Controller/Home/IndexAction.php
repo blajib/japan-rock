@@ -6,7 +6,6 @@ namespace App\Controller\Home;
 
 use App\Manager\WordManager;
 use App\Repository\WordGroupRepository;
-use App\Tools\WeatherTools;
 use Pyrrah\OpenWeatherMapBundle\Services\Client;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -23,7 +22,6 @@ class IndexAction extends AbstractController
         WordManager $wordManager,
         WordGroupRepository $groupRepository,
         HttpClientInterface $client,
-        WeatherTools $tool
     ): Response {
         $wordGroup = $groupRepository->findByDate(new \DateTime());
 

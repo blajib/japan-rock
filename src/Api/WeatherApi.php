@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace App\Tools;
+namespace App\Api;
 
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 
-class WeatherTools
+class WeatherApi
 {
 
     public function __construct(private readonly HttpClientInterface $client)

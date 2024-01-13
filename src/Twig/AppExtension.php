@@ -13,6 +13,7 @@ class AppExtension extends AbstractExtension
     {
         return [
             new TwigFunction('random_city_weather', [AppRuntime::class, 'getRandomCityWheater']),
+            new TwigFunction('today_holiday', [AppRuntime::class, 'getTodayHoliday']),
         ];
     }
 }

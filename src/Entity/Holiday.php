@@ -15,13 +15,13 @@ class Holiday
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $roomaji = null;
+    private ?string $japanTranslate = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $frenchTranslate = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $japan = null;
-
-    #[ORM\Column(length: 255)]
-    private ?string $french = null;
+    private ?string $englishTranslate = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private ?\DateTimeInterface $date = null;
@@ -31,16 +31,24 @@ class Holiday
         return $this->id;
     }
 
-    public function getName(): ?string
+    public function getJapanTranslate(): ?string
     {
-        return $this->roomaji;
+        return $this->japanTranslate;
     }
 
-    public function setName(string $roomaji): static
+    public function setJapanTranslate(?string $japanTranslate): void
     {
-        $this->roomaji = $roomaji;
+        $this->japanTranslate = $japanTranslate;
+    }
 
-        return $this;
+    public function getFrenchTranslate(): ?string
+    {
+        return $this->frenchTranslate;
+    }
+
+    public function setFrenchTranslate(?string $frenchTranslate): void
+    {
+        $this->frenchTranslate = $frenchTranslate;
     }
 
     public function getDate(): ?\DateTimeInterface
@@ -48,40 +56,18 @@ class Holiday
         return $this->date;
     }
 
-    public function setDate(\DateTimeInterface $date): static
+    public function setDate(?\DateTimeInterface $date): void
     {
         $this->date = $date;
-
-        return $this;
     }
 
-    public function getRoomaji(): ?string
+    public function getEnglishTranslate(): ?string
     {
-        return $this->roomaji;
+        return $this->englishTranslate;
     }
 
-    public function setRoomaji(?string $roomaji): void
+    public function setEnglishTranslate(?string $englishTranslate): void
     {
-        $this->roomaji = $roomaji;
-    }
-
-    public function getJapan(): ?string
-    {
-        return $this->japan;
-    }
-
-    public function setJapan(?string $japan): void
-    {
-        $this->japan = $japan;
-    }
-
-    public function getFrench(): ?string
-    {
-        return $this->french;
-    }
-
-    public function setFrench(?string $french): void
-    {
-        $this->french = $french;
+        $this->englishTranslate = $englishTranslate;
     }
 }
