@@ -205,7 +205,47 @@ class Hiragana
 
         ],
         9 => [
+            [
+                'roomaji'  => 'ra',
+                'hiragana' => 'ら',
 
+            ],
+            [
+                'roomaji'  => 'ri',
+                'hiragana' => 'り',
+
+            ],
+            [
+                'roomaji'  => 'ru',
+                'hiragana' => 'る',
+
+            ],
+            [
+                'roomaji'  => 're',
+                'hiragana' => 'れ',
+
+            ],
+            [
+                'roomaji'  => 'ro',
+                'hiragana' => 'ろ',
+            ],
+        ],
+        10 => [
+            [
+                'roomaji'  => 'wa',
+                'hiragana' => 'わ',
+
+            ],
+            [
+                'roomaji'  => 'wo',
+                'hiragana' => 'を',
+
+            ],
+            [
+                'roomaji'  => 'n',
+                'hiragana' => 'ん',
+
+            ],
         ],
     ];
 }
