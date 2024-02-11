@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace App\Controller\Hiragana;
+namespace App\Controller\Symbol;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class BoardAction extends AbstractController
+class HiraganaBoardAction extends AbstractController
 {
     #[Route(
         '/hiragana/board',
@@ -16,6 +16,6 @@ class BoardAction extends AbstractController
     )]
     public function __invoke(string $level = '1'): Response
     {
-        return $this->render('hiragana/board.html.twig');
+        return $this->render('symbol/board.html.twig');
     }
 }

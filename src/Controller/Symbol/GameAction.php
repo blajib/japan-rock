@@ -2,24 +2,24 @@
 
 declare(strict_types=1);
 
-namespace App\Controller\Hiragana;
+namespace App\Controller\Symbol;
 
-use App\Form\Type\HiraganaType;
+use App\Form\Type\SymbolType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 #[Route(
-    '/hiragana/game',
-    name: 'hiragana_game',
+    '/symbol/game',
+    name: 'symbol_game',
 )]
 class GameAction extends AbstractController
 {
     public function __invoke(): Response
     {
-        $form = $this->createForm(HiraganaType::class);
+        $form = $this->createForm(SymbolType::class);
 
-        return $this->render('hiragana/game.html.twig', [
+        return $this->render('symbol/game.html.twig', [
             'form' => $form->createView(),
         ]);
     }

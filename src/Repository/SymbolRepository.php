@@ -1,48 +1,27 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Repository;
 
-use App\Entity\Symbol;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Doctrine\Persistence\ManagerRegistry;
 
-/**
- * @extends ServiceEntityRepository<Symbol>
- *
- * @method Symbol|null find($id, $lockMode = null, $lockVersion = null)
- * @method Symbol|null findOneBy(array $criteria, array $orderBy = null)
- * @method Symbol[]    findAll()
- * @method Symbol[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
- */
-class SymbolRepository extends ServiceEntityRepository
+abstract class SymbolRepository extends ServiceEntityRepository
 {
-    public function __construct(ManagerRegistry $registry)
+    public function findByLevel(int $level): array
     {
-        parent::__construct($registry, Symbol::class);
+        return $this->findBy(['level' => $level]);
     }
 
-//    /**
-//     * @return Symbol[] Returns an array of Symbol objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('s')
-//            ->andWhere('s.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('s.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
+    public function findToLevel(int $level): array
+    {
+        $qb = $this->createQueryBuilder('o');
 
-//    public function findOneBySomeField($value): ?Symbol
-//    {
-//        return $this->createQueryBuilder('s')
-//            ->andWhere('s.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
+        $qb
+            ->where('o.level <= :level')
+            ->setParameter('level', $level)
+        ;
+
+        return $qb->getQuery()->getResult();
+    }
 }

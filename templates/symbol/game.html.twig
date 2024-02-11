@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-  Play hiragana
+  Play symbol
 {% endblock %}
 
 {% block body %}
@@ -9,6 +9,16 @@
     <div class="col-md-4"></div>
     <div class="col-md-4 display-box">
       {{ form_start(form) }}
+      <div class="row">
+        <div class="col-md-5">
+          {{ form_label(form.symbol_choice) }}
+        </div>
+        <div class="col-md-3">
+          {{ form_widget(form.symbol_choice) }}
+        </div>
+        <div class="col-md-4">
+        </div>
+      </div>
       <div class="row">
         <div class="col-md-5">
           {{ form_label(form.level_choice) }}
@@ -30,47 +40,47 @@
       </div>
       <div class="row">
         <div class="col-md-7">
-          {{ form_label(form.hiragana_show) }}
+          {{ form_label(form.symbol_show) }}
         </div>
         <div class="col-md-1">
-          {{ form_widget(form.hiragana_show) }}
+          {{ form_widget(form.symbol_show) }}
         </div>
         <div class="col-md-4"></div>
       </div>
       <div class="row">
         <div class="col-md-7">
-          {{ form_label(form.hiragana_sound) }}
+          {{ form_label(form.symbol_sound) }}
         </div>
         <div class="col-md-1">
-          {{ form_widget(form.hiragana_sound) }}
+          {{ form_widget(form.symbol_sound) }}
         </div>
         <div class="col-md-4"></div>
       </div>
-      <div id="hiragana-group-select" class="row" hidden>
+      <div id="symbol-group-select" class="row" hidden>
         <div class="col-md-7">
-          {{ form_label(form.hiragana_select_group) }}
+          {{ form_label(form.symbol_select_group) }}
         </div>
         <div class="col-md-1">
-          {{ form_widget(form.hiragana_select_group) }}
+          {{ form_widget(form.symbol_select_group) }}
         </div>
         <div class="col-md-4"></div>
       </div>
       <div class="row">
         <div class="col-md-4"></div>
         <div class="col-md-4">
-          <input class="btn btn-outline-light" type="hidden" value="Get Hiragana" id="get-hiragana">
+          <input class="btn btn-outline-light" type="hidden" value="Get Hiragana" id="get-symbol">
 
         </div>
         <div class="col-md-4"></div>
       </div>
-      <div id="hiragana-block" hidden>
+      <div id="symbol-block" hidden>
         <div class="row">
           <div class="col-md-5"></div>
           <div class="col-md-3">
-            <h1 id="hiragana_roomaji_show_field" class="display-1" hidden></h1>
-            <h1 id="hiragana_hiragana_show_field" class="display-1" hidden></h1>
-            <audio id="hiragana_audio" controls src="#" hidden></audio>
-            <button id="hiragana_hiragana_sound_field" class="btn btn-light mb-3" hidden>Écouter</button>
+            <h1 id="symbol_roomaji_show_field" class="display-1" hidden></h1>
+            <h1 id="symbol_symbol_show_field" class="display-1" hidden></h1>
+            <audio id="symbol_audio" controls src="#" hidden></audio>
+            <button id="symbol_symbol_sound_field" class="btn btn-light mb-3" hidden>Écouter</button>
           </div>
         </div>
       </div>
@@ -79,9 +89,9 @@
 {% endblock %}
 
 {% block javascripts %}
-  <input type="hidden" value="{{ path('hiragana-get') }}" id="hiragana-get-route">
-  <input type="hidden" value="{{ path('hiragana-get-group') }}" id="hiragana-get-group-route">
-  <input type="hidden" value="/assets/sound/hiraganas/" id="hiragana-get-sound">
-  <script src="{{ asset('get-hiragana.js','js') }}">
+  <input type="hidden" value="{{ path('symbol-get') }}" id="symbol-get-route">
+  <input type="hidden" value="{{ path('symbol-get-group') }}" id="symbol-get-group-route">
+  <input type="hidden" value="/assets/sound/hiraganas/" id="symbol-get-sound">
+  <script src="{{ asset('get-symbol.js','js') }}">
   </script>
 {% endblock %}

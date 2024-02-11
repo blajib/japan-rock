@@ -9,7 +9,7 @@ use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
 
-class HiraganaType extends AbstractType
+class SymbolType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
@@ -36,23 +36,30 @@ class HiraganaType extends AbstractType
             ->add('roomaji_show', CheckboxType::class, [
                 'label' => 'Afficher Roomaji',
                 'attr'  => [
-                    'class' => 'hiragana-checkbox',
+                    'class' => 'symbol-checkbox',
                 ],
             ])
-            ->add('hiragana_show', CheckboxType::class, [
+            ->add('symbol_show', CheckboxType::class, [
                 'label' => 'Afficher Hiragana',
                 'attr'  => [
-                    'class' => 'hiragana-checkbox',
+                    'class' => 'symbol-checkbox',
                 ],
             ])
-            ->add('hiragana_sound', CheckboxType::class, [
+            ->add('symbol_sound', CheckboxType::class, [
                 'label' => 'Prononciation',
                 'attr'  => [
-                    'class' => 'hiragana-checkbox',
+                    'class' => 'symbol-checkbox',
                 ],
             ])
-            ->add('hiragana_select_group', CheckboxType::class, [
+            ->add('symbol_select_group', CheckboxType::class, [
                 'label' => 'Uniquement le groupe',
+            ])
+            ->add('symbol_choice', ChoiceType::class, [
+                'choices' => [
+                    'hiragana' => 'hiragana',
+                    'katakana' => 'katakana',
+                ],
+                'data'    => 'hiragana',
             ])
         ;
     }

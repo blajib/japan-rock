@@ -4,245 +4,245 @@ declare(strict_types=1);
 
 namespace App\Symbols;
 
-class Hiragana
+class Hiraganas
 {
     public const HIRAGANA_SYMBOLS = [
-        1 => [
+        1  => [
             [
-                'roomaji'  => 'a',
+                'romaji'   => 'a',
                 'hiragana' => 'あ',
             ],
             [
-                'roomaji'  => 'i',
+                'romaji'   => 'i',
                 'hiragana' => 'い',
             ],
             [
-                'roomaji'  => 'u',
+                'romaji'   => 'u',
                 'hiragana' => 'う',
             ],
             [
-                'roomaji'  => 'e',
+                'romaji'   => 'e',
                 'hiragana' => 'え',
             ],
             [
-                'roomaji'  => 'o',
+                'romaji'   => 'o',
                 'hiragana' => 'お',
             ],
         ],
-        2 => [
+        2  => [
             [
-                'roomaji'  => 'ka',
+                'romaji'   => 'ka',
                 'hiragana' => 'か',
 
             ],
             [
-                'roomaji'  => 'ki',
+                'romaji'   => 'ki',
                 'hiragana' => 'き',
 
             ],
             [
-                'roomaji'  => 'ku',
+                'romaji'   => 'ku',
                 'hiragana' => 'く',
 
             ],
             [
-                'roomaji'  => 'ke',
+                'romaji'   => 'ke',
                 'hiragana' => 'け',
 
             ],
             [
-                'roomaji'  => 'ko',
+                'romaji'   => 'ko',
                 'hiragana' => 'こ',
 
             ],
         ],
-        3 => [
+        3  => [
             [
-                'roomaji'  => 'sa',
+                'romaji'   => 'sa',
                 'hiragana' => 'さ',
 
             ],
             [
-                'roomaji'  => 'shi',
+                'romaji'   => 'shi',
                 'hiragana' => 'し',
 
             ],
             [
-                'roomaji'  => 'su',
+                'romaji'   => 'su',
                 'hiragana' => 'す',
 
             ],
             [
-                'roomaji'  => 'se',
+                'romaji'   => 'se',
                 'hiragana' => 'せ',
 
             ],
             [
-                'roomaji'  => 'so',
+                'romaji'   => 'so',
                 'hiragana' => 'そ',
 
             ],
         ],
-        4 => [
+        4  => [
             [
-                'roomaji'  => 'ta',
+                'romaji'   => 'ta',
                 'hiragana' => 'た',
 
             ],
             [
-                'roomaji'  => 'chi',
+                'romaji'   => 'chi',
                 'hiragana' => 'ち',
 
             ],
             [
-                'roomaji'  => 'tsu',
+                'romaji'   => 'tsu',
                 'hiragana' => 'つ',
 
             ],
             [
-                'roomaji'  => 'te',
+                'romaji'   => 'te',
                 'hiragana' => 'て',
 
             ],
             [
-                'roomaji'  => 'to',
+                'romaji'   => 'to',
                 'hiragana' => 'と',
             ],
         ],
-        5 => [
+        5  => [
             [
-                'roomaji'  => 'na',
+                'romaji'   => 'na',
                 'hiragana' => 'な',
 
             ],
             [
-                'roomaji'  => 'ni',
+                'romaji'   => 'ni',
                 'hiragana' => 'に',
 
             ],
             [
-                'roomaji'  => 'nu',
+                'romaji'   => 'nu',
                 'hiragana' => 'ぬ ',
 
             ],
             [
-                'roomaji'  => 'ne',
+                'romaji'   => 'ne',
                 'hiragana' => 'ね',
 
             ],
             [
-                'roomaji'  => 'no',
+                'romaji'   => 'no',
                 'hiragana' => 'の',
             ],
         ],
-        6 => [
+        6  => [
             [
-                'roomaji'  => 'ha',
+                'romaji'   => 'ha',
                 'hiragana' => 'は',
 
             ],
             [
-                'roomaji'  => 'hi',
+                'romaji'   => 'hi',
                 'hiragana' => 'ひ',
 
             ],
             [
-                'roomaji'  => 'fu',
+                'romaji'   => 'fu',
                 'hiragana' => 'ふ',
 
             ],
             [
-                'roomaji'  => 'he',
+                'romaji'   => 'he',
                 'hiragana' => 'へ',
 
             ],
             [
-                'roomaji'  => 'ho',
+                'romaji'   => 'ho',
                 'hiragana' => 'ほ',
             ],
         ],
-        7 => [
+        7  => [
             [
-                'roomaji'  => 'ma',
+                'romaji'   => 'ma',
                 'hiragana' => 'ま',
 
             ],
             [
-                'roomaji'  => 'mi',
+                'romaji'   => 'mi',
                 'hiragana' => 'み',
 
             ],
             [
-                'roomaji'  => 'mu',
+                'romaji'   => 'mu',
                 'hiragana' => 'む',
 
             ],
             [
-                'roomaji'  => 'me',
+                'romaji'   => 'me',
                 'hiragana' => 'め',
 
             ],
             [
-                'roomaji'  => 'mo',
+                'romaji'   => 'mo',
                 'hiragana' => 'も',
             ],
         ],
-        8 => [
+        8  => [
             [
-                'roomaji'  => 'ya',
+                'romaji'   => 'ya',
                 'hiragana' => 'や',
 
             ],
             [
-                'roomaji'  => 'yu',
+                'romaji'   => 'yu',
                 'hiragana' => 'ゆ',
 
             ],
             [
-                'roomaji'  => 'yo',
+                'romaji'   => 'yo',
                 'hiragana' => 'よ',
             ],
 
         ],
-        9 => [
+        9  => [
             [
-                'roomaji'  => 'ra',
+                'romaji'   => 'ra',
                 'hiragana' => 'ら',
 
             ],
             [
-                'roomaji'  => 'ri',
+                'romaji'   => 'ri',
                 'hiragana' => 'り',
 
             ],
             [
-                'roomaji'  => 'ru',
+                'romaji'   => 'ru',
                 'hiragana' => 'る',
 
             ],
             [
-                'roomaji'  => 're',
+                'romaji'   => 're',
                 'hiragana' => 'れ',
 
             ],
             [
-                'roomaji'  => 'ro',
+                'romaji'   => 'ro',
                 'hiragana' => 'ろ',
             ],
         ],
         10 => [
             [
-                'roomaji'  => 'wa',
+                'romaji'   => 'wa',
                 'hiragana' => 'わ',
 
             ],
             [
-                'roomaji'  => 'wo',
+                'romaji'   => 'wo',
                 'hiragana' => 'を',
 
             ],
             [
-                'roomaji'  => 'n',
+                'romaji'   => 'n',
                 'hiragana' => 'ん',
 
             ],
