@@ -4,34 +4,59 @@ declare(strict_types=1);
 
 namespace App\Form\Type;
 
+use App\Repository\HiraganaRepository;
+use App\Repository\KatakanaRepository;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class SymbolType extends AbstractType
 {
+    public function __construct(
+        private readonly HiraganaRepository $hiraganaRepository,
+        private readonly KatakanaRepository $katakanaRepository
+    ) {
+    }
+
+    public function configureOptions(OptionsResolver $resolver): void
+    {
+        $resolver->setDefaults([
+            'symbol_type' => null,
+        ]);
+    }
+
+    private function getLevelChoice(string $type): array
+    {
+        if ('hiragana' === $type) {
+            $choices = $this->hiraganaRepository->findLevelChoices();
+        } else {
+            $choices = $this->katakanaRepository->findLevelChoices();
+        }
+
+        $formatChoices = [];
+
+        foreach ($choices as $element) {
+            $formatChoices[] = $element["level"];
+        }
+
+        return $formatChoices;
+    }
+
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
             ->add('level_choice', ChoiceType::class, [
-                'label'       => 'Niveau',
-                'attr'        => [
+                'label'        => 'Niveau',
+                'attr'         => [
                     'class' => 'js-select-level btn btn-outline-light',
                 ],
-                'placeholder' => 'Select',
-                'choices'     => [
-                    'Niveau 1'  => 1,
-                    'Niveau 2'  => 2,
-                    'Niveau 3'  => 3,
-                    'Niveau 4'  => 4,
-                    'Niveau 5'  => 5,
-                    'Niveau 6'  => 6,
-                    'Niveau 7'  => 7,
-                    'Niveau 8'  => 8,
-                    'Niveau 9'  => 9,
-                    'Niveau 10' => 10,
-                ],
+                'placeholder'  => 'Select',
+                'choices'      => $this->getLevelChoice($options['symbol_type']),
+                'choice_label' => function ($choice) {
+                    return 'Level - ' . $choice;
+                },
             ])
             ->add('roomaji_show', CheckboxType::class, [
                 'label' => 'Afficher Roomaji',
@@ -63,5 +88,4 @@ class SymbolType extends AbstractType
             ])
         ;
     }
-
 }

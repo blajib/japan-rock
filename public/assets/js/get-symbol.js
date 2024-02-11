@@ -106,9 +106,9 @@ symbolGetGroupButton.addEventListener('change', async function () {
 const nextSymbol = () => {
   const randomIndex = Math.floor(Math.random() * symbols.length);
   let symbol = JSON.parse(symbols[randomIndex]);
-  roomajiShow.innerHTML = symbol['roomaji'];
-  symbolShow.innerHTML = symbol['japanese'];
-  symbolSound.src = symbolSoundAsset.value + symbol['roomaji'] + '.mp3';
+  roomajiShow.innerHTML = symbol.romaji;
+  symbolShow.innerHTML = symbol.japanese;
+  symbolSound.src = symbolSoundAsset.value + symbol.romaji + '.mp3';
   if (symbolButtonSound.checked) {
     symbolSound.play();
   }

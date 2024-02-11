@@ -24,4 +24,15 @@ abstract class SymbolRepository extends ServiceEntityRepository
 
         return $qb->getQuery()->getResult();
     }
+
+    public function findLevelChoices(): array
+    {
+        $qb = $this->createQueryBuilder('o');
+
+        $qb
+            ->select('DISTINCT o.level')
+        ;
+
+        return $qb->getQuery()->getResult();
+    }
 }

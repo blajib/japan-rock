@@ -17,7 +17,7 @@ class GameAction extends AbstractController
 {
     public function __invoke(): Response
     {
-        $form = $this->createForm(SymbolType::class);
+        $form = $this->createForm(SymbolType::class,null, ['symbol_type' => 'hiragana']);
 
         return $this->render('symbol/game.html.twig', [
             'form' => $form->createView(),
