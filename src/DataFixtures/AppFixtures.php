@@ -4,6 +4,7 @@ namespace App\DataFixtures;
 
 use App\Entity\Hiragana;
 use App\Entity\Katakana;
+use App\Helper\HolidayHelper;
 use App\Symbols\Hiraganas;
 use App\Symbols\Katakanas;
 use Doctrine\Bundle\FixturesBundle\Fixture;
@@ -11,6 +12,9 @@ use Doctrine\Persistence\ObjectManager;
 
 class AppFixtures extends Fixture
 {
+    public function __construct(private readonly HolidayHelper $holidayHelper)
+    {
+    }
 
     public function load(ObjectManager $manager): void
     {
@@ -33,6 +37,8 @@ class AppFixtures extends Fixture
                 $manager->persist($hiragana);
             }
         }
+
+        $this->holidayHelper->insertHolidays();
 
         $manager->flush();
     }

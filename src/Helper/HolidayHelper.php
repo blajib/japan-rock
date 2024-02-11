@@ -2,48 +2,33 @@
 
 declare(strict_types=1);
 
-namespace App\Command;
+namespace App\Helper;
 
 use App\Api\HolidayApi;
 use App\Entity\Holiday;
 use App\Repository\HolidayRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
-use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Output\OutputInterface;
-use Symfony\Component\Console\Style\SymfonyStyle;
 
-#[AsCommand(
-    name: 'import:holiday',
-    description: 'Importer les jours fèriés',
-)]
-class GetHolidayCommand extends Command
+class HolidayHelper
 {
     public function __construct(
         private readonly HolidayRepository $holidayRepository,
         private readonly HolidayApi $holidayApi,
         private readonly EntityManagerInterface $entityManager
     ) {
-        parent::__construct();
     }
 
-    protected function execute(InputInterface $input, OutputInterface $output): int
+    public function insertHolidays(): int
     {
-        $io = new SymfonyStyle($input, $output);
-
         if ($this->holidayRepository->findByYear()) {
-            $io->error("Les fêtes de l'année on déja été importées");
-
-            return Command::FAILURE;
+            throw new \Exception("Les fêtes de l'année on déja été importées");
         }
 
         $holidaysArray = $this->holidayApi->getHolidaysYear();
 
         if (empty($holidaysArray)) {
-            $io->error("Les fêtes de l'année on déja été importées");
-
-            return Command::FAILURE;
+            throw new \Exception("Les fêtes de l'année on déja été importées");
         }
 
         foreach ($holidaysArray as $holidayLine) {
@@ -55,8 +40,6 @@ class GetHolidayCommand extends Command
         }
 
         $this->entityManager->flush();
-
-        $io->success("l'ajout des jours de fête à bien été effectué");
 
         return Command::SUCCESS;
     }

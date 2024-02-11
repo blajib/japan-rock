@@ -15,6 +15,7 @@ class HolidayApi
     public function getHolidaysYear(): array
     {
         $year = date('Y');
+
         $response = $this->client->request(
             'GET',
             'https://date.nager.at/api/v3/publicholidays/' . $year . '/JP'
