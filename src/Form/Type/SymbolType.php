@@ -6,6 +6,7 @@ namespace App\Form\Type;
 
 use App\Repository\HiraganaRepository;
 use App\Repository\KatakanaRepository;
+use App\Repository\SymbolRepository;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -15,8 +16,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 class SymbolType extends AbstractType
 {
     public function __construct(
-        private readonly HiraganaRepository $hiraganaRepository,
-        private readonly KatakanaRepository $katakanaRepository
+        private readonly SymbolRepository $symbolRepository
     ) {
     }
 
@@ -29,11 +29,7 @@ class SymbolType extends AbstractType
 
     private function getLevelChoice(string $type): array
     {
-        if ('hiragana' === $type) {
-            $choices = $this->hiraganaRepository->findLevelChoices();
-        } else {
-            $choices = $this->katakanaRepository->findLevelChoices();
-        }
+        $choices = $this->symbolRepository->findLevelChoices($type);
 
         $formatChoices = [];
 

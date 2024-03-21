@@ -2,11 +2,11 @@
 
 namespace App\Entity;
 
+use App\Repository\SymbolRepository;
 use Doctrine\ORM\Mapping as ORM;
 
-// #[ORM\Entity(repositoryClass: SymbolRepository::class)]
-#[ORM\MappedSuperclass]
-abstract class Symbol
+#[ORM\Entity(repositoryClass: SymbolRepository::class)]
+class Symbol
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -22,9 +22,17 @@ abstract class Symbol
     #[ORM\Column]
     private ?int $level = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $type = null;
+
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    public function setId(?int $id): void
+    {
+        $this->id = $id;
     }
 
     public function getRomaji(): ?string
@@ -32,11 +40,9 @@ abstract class Symbol
         return $this->romaji;
     }
 
-    public function setRomaji(?string $romaji): static
+    public function setRomaji(?string $romaji): void
     {
         $this->romaji = $romaji;
-
-        return $this;
     }
 
     public function getJapanese(): ?string
@@ -44,11 +50,9 @@ abstract class Symbol
         return $this->japanese;
     }
 
-    public function setJapanese(string $japanese): static
+    public function setJapanese(?string $japanese): void
     {
         $this->japanese = $japanese;
-
-        return $this;
     }
 
     public function getLevel(): ?int
@@ -59,5 +63,15 @@ abstract class Symbol
     public function setLevel(?int $level): void
     {
         $this->level = $level;
+    }
+
+    public function getType(): ?string
+    {
+        return $this->type;
+    }
+
+    public function setType(?string $type): void
+    {
+        $this->type = $type;
     }
 }

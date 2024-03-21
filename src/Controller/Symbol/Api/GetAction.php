@@ -6,6 +6,7 @@ namespace App\Controller\Symbol\Api;
 
 use App\Repository\HiraganaRepository;
 use App\Repository\KatakanaRepository;
+use App\Repository\SymbolRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
@@ -15,20 +16,15 @@ class GetAction extends AbstractController
     use ApiTrait;
 
     #[Route(
-        '/symbol/get/{symbol}/{level}',
+        '/symbol/get/{type}/{level}',
         name: 'symbol-get',
     )]
     public function __invoke(
-        HiraganaRepository $hiraganaRepository,
-        KatakanaRepository $katakanaRepository,
-        ?string $symbol = 'hiragana',
+        SymbolRepository $symbolRepository,
+        ?string $type = 'hiragana',
         ?string $level = '1'
     ): JsonResponse {
-        if ($symbol === 'hiragana') {
-            $result = $hiraganaRepository->findToLevel((int) $level);
-        } else {
-            $result = $katakanaRepository->findToLevel((int) $level);
-        }
+        $result = $symbolRepository->findToLevel((int) $level, $type);
 
         return new JsonResponse($this->serializeResult($result));
     }
