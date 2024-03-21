@@ -17,7 +17,7 @@ class GetAction extends AbstractController
 
     #[Route(
         '/symbol/get/{type}/{level}',
-        name: 'symbol-get',
+        name: 'symbol_get',
     )]
     public function __invoke(
         SymbolRepository $symbolRepository,

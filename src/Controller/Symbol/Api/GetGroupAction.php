@@ -17,7 +17,7 @@ class GetGroupAction extends AbstractController
 
     #[Route(
         '/symbol/get-group/{type}/{level}',
-        name: 'symbol-get-group',
+        name: 'symbol_get_group',
     )]
     public function __invoke(
         SymbolRepository $symbolRepository,
