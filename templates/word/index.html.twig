@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Word index{% endblock %}
+
+{% block body %}
+  <div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-9">
+      <div class="display-box">
+        <h1>Tous les mots</h1>
+        {% for word in words %}
+          <div class="row">
+            <div class="col-md-5">
+              {{ word.frenchTranslate }}
+            </div>
+            <div class="col-md-5">
+              {{ word.japanTranslate }}
+            </div>
+            <div class="col-md-2"></div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="col-md-2"></div>
+  </div>
+{% endblock %}
