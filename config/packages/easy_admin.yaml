@@ -1,0 +1,6 @@
+easy_admin:
+    entities:
+        - App\Entity\User
+    menu:
+        - { label: 'Users', entity: 'User', icon: 'user' }
+    site_name: 'My Admin'

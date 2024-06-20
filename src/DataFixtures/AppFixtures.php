@@ -4,19 +4,29 @@ namespace App\DataFixtures;
 
 use App\Entity\Kanji;
 use App\Entity\Symbol;
+use App\Entity\User;
 use App\Helper\HolidayHelper;
 use App\Symbols\Hiraganas;
 use App\Symbols\Katakanas;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 class AppFixtures extends Fixture
 {
-    public function __construct(private readonly HolidayHelper $holidayHelper)
-    {
+    public function __construct(
+        private readonly HolidayHelper $holidayHelper,
+        private readonly UserPasswordHasherInterface $passwordHasher
+    ) {
     }
 
     public function load(ObjectManager $manager): void
+    {
+        $this->loadSymbols($manager);
+        $this->loadMainUser($manager);
+    }
+
+    private function loadSymbols(ObjectManager $manager): void
     {
         $kanjiFile = file_get_contents('public/kanji.json');
         $kanjis = json_decode($kanjiFile, true, 512, JSON_THROW_ON_ERROR);
@@ -56,6 +66,23 @@ class AppFixtures extends Fixture
 
         $this->holidayHelper->insertHolidays();
 
+        $manager->flush();
+    }
+
+    private function loadMainUser(ObjectManager $manager): void
+    {
+        $user = new User();
+        $password = 'california';
+        $user->setRoles(['ROLE_SUPER_ADMIN']);
+        $user->setUsername('jib');
+        $user->setEmail('blaschka@gmail.com');
+        $hashedPassword = $this->passwordHasher->hashPassword(
+            $user,
+            $password
+        );
+        $user->setPassword($hashedPassword);
+
+        $manager->persist($user);
         $manager->flush();
     }
 }
