@@ -2,6 +2,8 @@
 
 namespace App\DataFixtures;
 
+use App\Entity\DashboardPage;
+use App\Entity\GlobalConfiguration;
 use App\Entity\Kanji;
 use App\Entity\Symbol;
 use App\Entity\User;
@@ -24,6 +26,8 @@ class AppFixtures extends Fixture
     {
         $this->loadSymbols($manager);
         $this->loadMainUser($manager);
+        $this->loadDashboardPage($manager);
+        $this->loadGlobalConfiguration($manager);
     }
 
     private function loadSymbols(ObjectManager $manager): void
@@ -73,7 +77,7 @@ class AppFixtures extends Fixture
     {
         $user = new User();
         $password = 'california';
-        $user->setRoles(['ROLE_SUPER_ADMIN']);
+        $user->setRoles(['ROLE_ADMIN']);
         $user->setUsername('jib');
         $user->setEmail('blaschka@gmail.com');
         $hashedPassword = $this->passwordHasher->hashPassword(
@@ -83,6 +87,25 @@ class AppFixtures extends Fixture
         $user->setPassword($hashedPassword);
 
         $manager->persist($user);
+        $manager->flush();
+    }
+
+    private function loadDashboardPage(ObjectManager $manager): void
+    {
+        $page = new DashboardPage();
+        $page->setId(1);
+        $page->setTitle('Default title');
+
+        $manager->persist($page);
+        $manager->flush();
+    }
+
+    private function loadGlobalConfiguration(ObjectManager $manager): void
+    {
+        $configuration = new GlobalConfiguration();
+        $configuration->setId(1);
+
+        $manager->persist($configuration);
         $manager->flush();
     }
 }

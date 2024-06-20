@@ -1,5 +1,4 @@
 body {
-  background-image: url("../images/background-shop.jpg");
   background-size: cover;
   width: auto;
 }
@@ -38,7 +37,7 @@ body {
   font-weight: bold;
 }
 
-#bloc-holiday{
+#bloc-holiday {
   width: 300px;
   font-weight: bold;
   margin: 20px;

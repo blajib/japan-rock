@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace App\Controller\Home;
 
 use App\Manager\WordManager;
+use App\Repository\DashboardPageRepository;
 use App\Repository\WordGroupRepository;
-use Pyrrah\OpenWeatherMapBundle\Services\Client;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -22,15 +22,18 @@ class IndexAction extends AbstractController
         WordManager $wordManager,
         WordGroupRepository $groupRepository,
         HttpClientInterface $client,
+        DashboardPageRepository $pageRepository
     ): Response {
         $wordGroup = $groupRepository->findByDate(new \DateTime());
+        $dashboardPage = $pageRepository->singleton();
 
         if (null === $wordGroup) {
             $wordGroup = $wordManager->initDayWordGroup();
         }
 
         return $this->render('home/index.html.twig', [
-            'words' => $wordGroup->getWords(),
+            'words'          => $wordGroup->getWords(),
+            'dashboard_page' => $dashboardPage,
         ]);
     }
 }
