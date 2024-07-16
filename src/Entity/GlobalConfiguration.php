@@ -15,6 +15,9 @@ class GlobalConfiguration
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $background = null;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $weatherApiId = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -33,6 +36,18 @@ class GlobalConfiguration
     public function setBackground(?string $background): static
     {
         $this->background = $background;
+
+        return $this;
+    }
+
+    public function getWeatherApiId()
+    {
+        return $this->weatherApiId;
+    }
+
+    public function setWeatherApiId($weatherApiId)
+    {
+        $this->weatherApiId = $weatherApiId;
 
         return $this;
     }

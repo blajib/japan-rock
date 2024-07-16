@@ -16,7 +16,7 @@ class GlobalConfigurationRepository extends ServiceEntityRepository
         parent::__construct($registry, GlobalConfiguration::class);
     }
 
-    public function singleton()
+    public function singleton(): GlobalConfiguration
     {
         return $this->find(1);
     }
