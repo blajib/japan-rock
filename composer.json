@@ -22,7 +22,7 @@
     "symfony/framework-bundle": "7.1.*",
     "symfony/http-client": "7.1.*",
     "symfony/mime": "7.1.*",
-    "symfony/runtime": "7.1.*",
+    "symfony/runtime": "*",
     "symfony/security-bundle": "7.1.*",
     "symfony/security-csrf": "7.1.*",
     "symfony/serializer": "7.1.*",

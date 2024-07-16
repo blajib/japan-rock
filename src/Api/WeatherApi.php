@@ -9,17 +9,21 @@ use Symfony\Contracts\HttpClient\HttpClientInterface;
 class WeatherApi
 {
 
-    public function __construct(private readonly HttpClientInterface $client)
-    {
+    public function __construct(
+        private readonly HttpClientInterface $client,
+        private string $apiWeatherId
+    ) {
     }
 
     public function getWeather(string $city): array
     {
         $response = $this->client->request(
             'GET',
-            'https://api.openweathermap.org/data/2.5/weather?q=' . ucfirst(
-                $city
-            ) . '&units=metric&appid=44761feaa8070cfaefad90ca1fd81f37'
+            sprintf(
+                'https://api.openweathermap.org/data/2.5/weather?q=%s&units=metric&appid=%s',
+                ucfirst($city),
+                $this->apiWeatherId
+            )
         );
 
         return json_decode($response->getContent(), true);

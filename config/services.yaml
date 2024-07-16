@@ -27,6 +27,7 @@ services:
             # that's created in this file (including controller arguments)
             string $projectDir: '%kernel.project_dir%'
             array $japaneseCities: '%japanese-cities%'
+            string $apiWeatherId: '%env(API_WEATHER_ID)%'
 
     # makes classes in src/ available to be used as services
     # this creates a service per class whose id is the fully-qualified class name
