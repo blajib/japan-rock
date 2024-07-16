@@ -1,8 +1,10 @@
 {% set cityData = random_city_weather() %}
-{% set weatherIconLink = 'https://openweathermap.org/img/wn/'~cityData.weather[0].icon~'@2x.png' %}
-<div id="bloc-weather" class="display-box">
-  <p>{{ cityData.name }}</p>
-  <img src="{{ weatherIconLink }}" alt="">
-  <small>min: {{ cityData.main.temp_min|round }}</small><br>
-  <small>max: {{ cityData.main.temp_max|round }}</small>
-</div>
+{% if cityData is not null%}
+  {% set weatherIconLink = 'https://openweathermap.org/img/wn/'~cityData.weather[0].icon~'@2x.png' %}
+  <div id="bloc-weather" class="display-box">
+    <p>{{ cityData.name }}</p>
+    <img src="{{ weatherIconLink }}" alt="">
+    <small>min: {{ cityData.main.temp_min|round }}</small><br>
+    <small>max: {{ cityData.main.temp_max|round }}</small>
+  </div>
+{% endif %}

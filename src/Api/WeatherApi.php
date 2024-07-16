@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Api;
 
 use Symfony\Contracts\HttpClient\HttpClientInterface;
+use Throwable;
 
 class WeatherApi
 {
@@ -15,7 +16,7 @@ class WeatherApi
     ) {
     }
 
-    public function getWeather(string $city): array
+    public function getWeather(string $city): ?array
     {
         $response = $this->client->request(
             'GET',
@@ -26,6 +27,14 @@ class WeatherApi
             )
         );
 
-        return json_decode($response->getContent(), true);
+        $result = null;
+        
+        try{
+            $result = json_decode($response->getContent(), true);
+        }catch (Throwable $e){
+            
+        }
+
+        return $result;
     }
 }

@@ -21,7 +21,7 @@ class AppRuntime implements RuntimeExtensionInterface
     ) {
     }
 
-    public function getRandomCityWheater(): array
+    public function getRandomCityWheater(): ?array
     {
         shuffle($this->japaneseCities);
 
