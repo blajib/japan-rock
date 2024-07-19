@@ -74,21 +74,21 @@ export default class extends Controller {
  async _initGroupSymbols() {
     let response = await fetch(this.symbolGetGroupRouteTarget.value + '/' + this.symbolChoiceTarget.value + '/' + this.levelChoiceTarget.value);
     if (response.ok) {
-      symbols = null;
-      symbols = await response.json();
+      this.symbols = null;
+      this.symbols = await response.json();
     } else {
       alert('HTTP-Error: ' + response.status);
     }
   };
 
   _nextSymbol(){
-    const randomIndex = Math.floor(Math.random() * symbols.length);
-    let symbol = JSON.parse(symbols[randomIndex]);
+    const randomIndex = Math.floor(Math.random() * this.symbols.length);
+    let symbol = JSON.parse(this.symbols[randomIndex]);
     this.roomajiShowFieldTarget.innerHTML = symbol.romaji;
     this.symbolShowFieldTarget.innerHTML = symbol.japanese;
-    audioPlayer.src = this.symbolGetSoundTarget.value + symbol.romaji + '.mp3';
+    this.audioPlayerTarget.src = this.symbolGetSoundTarget.value + symbol.romaji + '.mp3';
     if (this.soundCheckboxTarget.checked) {
-      audioPlayer.play();
+      this.audioPlayerTarget.play();
     }
   };
 
