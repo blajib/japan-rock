@@ -18,7 +18,8 @@ class AppFixtures extends Fixture
 {
     public function __construct(
         private readonly HolidayHelper $holidayHelper,
-        private readonly UserPasswordHasherInterface $passwordHasher
+        private readonly UserPasswordHasherInterface $passwordHasher,
+        private readonly string $defaultApiWeatherId
     ) {
     }
 
@@ -104,6 +105,7 @@ class AppFixtures extends Fixture
     {
         $configuration = new GlobalConfiguration();
         $configuration->setId(1);
+        $configuration->setWeatherApiId($this->defaultApiWeatherId);
 
         $manager->persist($configuration);
         $manager->flush();

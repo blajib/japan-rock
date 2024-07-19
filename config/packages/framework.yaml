@@ -18,13 +18,6 @@ framework:
     php_errors:
         log: true
 
-    assets:
-        packages:
-            hiragana-sound:
-                base_path: assets/sound/hiraganas/
-            js:
-                base_path: assets/js/
-
 when@test:
     framework:
         test: true
