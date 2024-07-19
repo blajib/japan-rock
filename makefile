@@ -1,6 +1,7 @@
-install: ## Initialize the project
-	symfony composer-install
-	symfony console do:mi:mi
-	symfony console do:fix:load
-	@$(call GREEN, "Project initialized!")
-	
+build:
+	symfony composer install
+	symfony console --no-interaction doctrine:mi:mi
+	symfony console --no-interaction do:fixture:load
+
+install:
+	make build
