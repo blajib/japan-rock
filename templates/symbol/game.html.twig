@@ -5,93 +5,96 @@
 {% endblock %}
 
 {% block body %}
-  <div class="row">
-    <div class="col-md-4"></div>
-    <div class="col-md-4 display-box">
-      {{ form_start(form) }}
-      <div class="row">
-        <div class="col-md-5">
-          {{ form_label(form.symbol_choice) }}
-        </div>
-        <div class="col-md-3">
-          {{ form_widget(form.symbol_choice) }}
-        </div>
-        <div class="col-md-4">
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-5">
-          {{ form_label(form.level_choice) }}
-        </div>
-        <div class="col-md-3">
-          {{ form_widget(form.level_choice) }}
-        </div>
-        <div class="col-md-4">
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-7">
-          {{ form_label(form.roomaji_show) }}
-        </div>
-        <div class="col-md-1">
-          {{ form_widget(form.roomaji_show) }}
-        </div>
-        <div class="col-md-4"></div>
-      </div>
-      <div class="row">
-        <div class="col-md-7">
-          {{ form_label(form.symbol_show) }}
-        </div>
-        <div class="col-md-1">
-          {{ form_widget(form.symbol_show) }}
-        </div>
-        <div class="col-md-4"></div>
-      </div>
-      <div class="row">
-        <div class="col-md-7">
-          {{ form_label(form.symbol_sound) }}
-        </div>
-        <div class="col-md-1">
-          {{ form_widget(form.symbol_sound) }}
-        </div>
-        <div class="col-md-4"></div>
-      </div>
-      <div id="symbol-group-select" class="row" hidden>
-        <div class="col-md-7">
-          {{ form_label(form.symbol_select_group) }}
-        </div>
-        <div class="col-md-1">
-          {{ form_widget(form.symbol_select_group) }}
-        </div>
-        <div class="col-md-4"></div>
-      </div>
-      <div class="row">
-        <div class="col-md-4"></div>
-        <div class="col-md-4">
-          <input class="btn btn-outline-light" type="hidden" value="Get Hiragana" id="get-symbol">
-
-        </div>
-        <div class="col-md-4"></div>
-      </div>
-      <div id="symbol-block" hidden>
+  <div {{ stimulus_controller('symbol-game') }}>
+    <input {{ stimulus_target('symbol-game','symbolGetRoute') }} type="hidden" value="{{ path('symbol_get') }}" id="symbol-get-route">
+    <input {{ stimulus_target('symbol-game','symbolGetGroupRoute') }} type="hidden" value="{{ path('symbol_get_group') }}" id="symbol-get-group-route">
+    <input {{ stimulus_target('symbol-game','symbolGetSound') }}type="hidden" value="/assets/sound/hiraganas/" id="symbol-get-sound">
+    <div class="row">
+      <div class="col-md-4"></div>
+      <div class="col-md-4 display-box">
+        {{ form_start(form) }}
         <div class="row">
-          <div class="col-md-5"></div>
+          <div class="col-md-5">
+            {{ form_label(form.symbol_choice) }}
+          </div>
           <div class="col-md-3">
-            <h1 id="symbol_roomaji_show_field" class="display-1" hidden></h1>
-            <h1 id="symbol_symbol_show_field" class="display-1" hidden></h1>
-            <audio id="symbol_audio" controls src="#" hidden></audio>
-            <button id="symbol_symbol_sound_field" class="btn btn-light mb-3" hidden>Écouter</button>
+            {{ form_widget(form.symbol_choice) }}
+          </div>
+          <div class="col-md-4">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-5">
+            {{ form_label(form.level_choice) }}
+          </div>
+          <div class="col-md-3">
+            {{ form_widget(form.level_choice) }}
+          </div>
+          <div class="col-md-4">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-7">
+            {{ form_label(form.roomaji_show) }}
+          </div>
+          <div class="col-md-1">
+            {{ form_widget(form.roomaji_show) }}
+          </div>
+          <div class="col-md-4"></div>
+        </div>
+        <div class="row">
+          <div class="col-md-7">
+            {{ form_label(form.symbol_show) }}
+          </div>
+          <div class="col-md-1">
+            {{ form_widget(form.symbol_show) }}
+          </div>
+          <div class="col-md-4"></div>
+        </div>
+        <div class="row">
+          <div class="col-md-7">
+            {{ form_label(form.symbol_sound) }}
+          </div>
+          <div class="col-md-1">
+            {{ form_widget(form.symbol_sound) }}
+          </div>
+          <div class="col-md-4"></div>
+        </div>
+        <div {{ stimulus_target('symbol-game','symbolGroupSelect') }} id="symbol-group-select" class="row" hidden>
+          <div class="col-md-7">
+            {{ form_label(form.symbol_select_group) }}
+          </div>
+          <div class="col-md-1">
+            {{ form_widget(form.symbol_select_group) }}
+          </div>
+          <div class="col-md-4"></div>
+        </div>
+        <div class="row">
+          <div class="col-md-4"></div>
+          <div class="col-md-4">
+            <input {{ stimulus_target('symbol-game','symbolGetButton') }} class="btn btn-outline-light" type="hidden" value="Get Hiragana" id="get-symbol">
+
+          </div>
+          <div class="col-md-4"></div>
+        </div>
+        <div {{ stimulus_target('symbol-game','symbolBlock')}} id="symbol-block" hidden>
+          <div class="row">
+            <div class="col-md-5"></div>
+            <div class="col-md-3">
+              <h1 {{ stimulus_target('symbol-game','roomajiShowField') }} id="symbol_roomaji_show_field" class="display-1" hidden></h1>
+              <h1 {{ stimulus_target('symbol-game','symbolShowField') }}id="symbol_symbol_show_field" class="display-1" hidden></h1>
+              <audio {{ stimulus_target('symbol-game','audioPlayer')}} id="symbol_audio" controls src="#" hidden></audio>
+              <button {{ stimulus_target('symbol-game','playButton')}} id="symbol_symbol_sound_field" class="btn btn-light mb-3" hidden>Écouter</button>
+            </div>
           </div>
         </div>
       </div>
+      <div class="col-md-4"></div>
     </div>
-    <div class="col-md-4"></div>
+  </div>
 {% endblock %}
 
-{% block javascripts %}
-  <input type="hidden" value="{{ path('symbol_get') }}" id="symbol-get-route">
-  <input type="hidden" value="{{ path('symbol_get_group') }}" id="symbol-get-group-route">
-  <input type="hidden" value="/assets/sound/hiraganas/" id="symbol-get-sound">
-  <script src="{{ asset('js/get-symbol.js') }}">
-  </script>
-{% endblock %}
+{# {% block javascripts %} #}
+{#  <script src="{{ asset('js/get-symbol.js') }}"> #}
+{#  </script> #}
+{# {% endblock %} #}

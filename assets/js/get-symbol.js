@@ -31,8 +31,11 @@ let symbolBlock = document.getElementById('symbol-block');
 //Liste des symbols à afficher
 let symbols = null;
 //Les case à cocher des paramètres d'affichages de l'symbol
+
+// Récupérer les 4 différement dans le controller
 let symbolCheckboxes = document.getElementsByClassName('symbol-checkbox');
 // Récupérer le choix de symbol
+
 let symbolChoice = document.getElementById('symbol_symbol_choice');
 
 let playButtonSymbolSound = document.getElementById('play-symbol-sound');

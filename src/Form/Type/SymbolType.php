@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace App\Form\Type;
 
-use App\Repository\HiraganaRepository;
-use App\Repository\KatakanaRepository;
 use App\Repository\SymbolRepository;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
@@ -46,7 +44,8 @@ class SymbolType extends AbstractType
             ->add('level_choice', ChoiceType::class, [
                 'label'        => 'Niveau',
                 'attr'         => [
-                    'class' => 'js-select-level btn btn-outline-light',
+                    'class'                   => 'js-select-level btn btn-outline-light',
+                    'data-symbol-game-target' => 'levelChoice',
                 ],
                 'placeholder'  => 'Select',
                 'choices'      => $this->getLevelChoice($options['symbol_type']),
@@ -58,22 +57,28 @@ class SymbolType extends AbstractType
                 'label' => 'Afficher Roomaji',
                 'attr'  => [
                     'class' => 'symbol-checkbox',
+                    'data-symbol-game-target' => 'roomajiShowCheckbox',
                 ],
             ])
             ->add('symbol_show', CheckboxType::class, [
                 'label' => 'Afficher Hiragana',
                 'attr'  => [
                     'class' => 'symbol-checkbox',
+                    'data-symbol-game-target' => 'symbolShowCheckbox',
                 ],
             ])
             ->add('symbol_sound', CheckboxType::class, [
                 'label' => 'Prononciation',
                 'attr'  => [
                     'class' => 'symbol-checkbox',
+                    'data-symbol-game-target' => 'soundCheckbox',
                 ],
             ])
             ->add('symbol_select_group', CheckboxType::class, [
                 'label' => 'Uniquement le groupe',
+                'attr'  => [
+                    'data-symbol-game-target' => 'groupCheckbox',
+                ],
             ])
             ->add('symbol_choice', ChoiceType::class, [
                 'choices' => [
@@ -81,6 +86,9 @@ class SymbolType extends AbstractType
                     'katakana' => 'katakana',
                 ],
                 'data'    => 'hiragana',
+                'attr' => [
+                    'data-symbol-game-target' => 'symbolChoice',
+                ]
             ])
         ;
     }
