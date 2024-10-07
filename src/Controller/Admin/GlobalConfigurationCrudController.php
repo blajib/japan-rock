@@ -26,8 +26,8 @@ class GlobalConfigurationCrudController extends AbstractCrudController
     {
         $fields = [
             ImageField::new('background', 'Image de fond')
-                ->setUploadDir('public/assets/uploads')
-                ->setBasePath('assets/uploads'),
+                ->setUploadDir('public/uploads')
+                ->setBasePath('uploads'),
         ];
 
 

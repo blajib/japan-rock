@@ -32,7 +32,6 @@ export default class extends Controller {
     this.levelChoiceTarget.selectedIndex = 0;
     this.symbolGroupSelectTarget.checked = false;
     let allBoxes = [
-      this.groupCheckboxTarget,
       this.roomajiShowCheckboxTarget,
       this.symbolShowCheckboxTarget,
       this.soundCheckboxTarget
@@ -40,6 +39,7 @@ export default class extends Controller {
 
     for (let checkbox of allBoxes) {
       checkbox.checked = false;
+      console.log(checkbox.id + '_field');
       let element = document.getElementById(checkbox.id + '_field');
       checkbox.addEventListener('change', function () {
         element.hidden = checkbox.checked !== true;
@@ -102,8 +102,8 @@ export default class extends Controller {
     });
 
     this.groupCheckboxTarget.addEventListener('change', async () => {
-      if (this.groupCheckboxTarget === true) {
-        await this._initGroupSymbols(this);
+      if (this.groupCheckboxTarget.checked === true) {
+        await this._initGroupSymbols();
       } else {
         await this._initAllSymbols();
       }
